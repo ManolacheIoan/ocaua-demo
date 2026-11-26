@@ -9,6 +9,7 @@ export function SectionTitle({ eyebrow, title, id }: { eyebrow: string; title: s
     <div className="mb-10">
       <p className="text-sm font-semibold tracking-widest text-lemn uppercase">{eyebrow}</p>
       <h2 id={id} className="mt-2 font-serif text-3xl font-bold text-bordo sm:text-4xl">{title}</h2>
+      <div aria-hidden="true" className="mt-4 h-px w-20 bg-gradient-to-r from-lemn-2 to-transparent" />
     </div>
   );
 }

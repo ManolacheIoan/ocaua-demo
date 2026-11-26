@@ -22,7 +22,7 @@ export function Placeholder({
     <div
       role="img"
       aria-label={`Loc pentru fotografie: ${label}`}
-      className={`relative flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-lemn via-lemn-2 to-bordo text-crem/90 shadow-sm ${className}`}
+      className={`relative flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-lemn via-bordo to-bordo-2 text-crem/90 shadow-sm ${className}`}
     >
       <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_30%_20%,#fff_0,transparent_45%)]" />
       <div className="relative flex flex-col items-center gap-2 p-4 text-center">
