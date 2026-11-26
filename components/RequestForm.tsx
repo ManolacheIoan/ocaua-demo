@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
+import { MessageCircle, Phone } from "lucide-react";
 import { site } from "@/content/site";
 
 export type FormKind = "masa" | "cazare" | "eveniment";
@@ -97,25 +98,25 @@ export function RequestForm({ kind, preset = "" }: { kind: FormKind; preset?: st
         <textarea className={field} id={`${id}-msg`} name="mesaj" rows={3} defaultValue={preset}
           placeholder={kind === "cazare" ? "Număr de nopți, tipul camerei…" : kind === "eveniment" ? "Tipul evenimentului, numărul de invitați, preferințe…" : "Ora dorită, preferințe…"} />
       </div>
-      <div className="flex flex-wrap gap-3 sm:col-span-2">
+      <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:flex-wrap">
         {formspreeReady ? (
           <>
-            <button type="submit" disabled={status === "sending"} className="flex-1 rounded-full bg-cioco px-6 py-3.5 font-semibold text-ivoriu shadow-sm transition hover:bg-cioco-2 disabled:opacity-60 sm:flex-none">
+            <button type="submit" disabled={status === "sending"} className="w-full rounded-full bg-cioco px-6 py-3.5 font-semibold text-ivoriu shadow-sm transition hover:bg-cioco-2 disabled:opacity-60 sm:w-auto">
               {status === "sending" ? "Se trimite…" : action}
             </button>
             {hasWa && (
-              <button type="button" onClick={onWhatsAppClick} className="flex-1 rounded-full border border-[#1e7a46] px-6 py-3.5 font-semibold text-[#145c33] transition hover:bg-[#1e7a46]/10 sm:flex-none">
+              <button type="button" onClick={onWhatsAppClick} className="w-full rounded-full border border-[#1e7a46] px-6 py-3.5 font-semibold text-[#145c33] transition hover:bg-[#1e7a46]/10 sm:w-auto">
                 Trimite pe WhatsApp
               </button>
             )}
           </>
         ) : (
           <>
-            <button type="submit" className="flex-1 rounded-full bg-cioco px-6 py-3.5 font-semibold text-ivoriu shadow-sm transition hover:bg-cioco-2 sm:flex-none">
-              {action}{hasWa && <span className="font-normal opacity-80"> · prin WhatsApp</span>}
+            <button type="submit" className="w-full rounded-full bg-cioco px-6 py-3.5 font-semibold text-ivoriu shadow-sm transition hover:bg-cioco-2 sm:w-auto">
+              <MessageCircle aria-hidden="true" className="mr-2 inline h-4 w-4 align-[-3px]" strokeWidth={1.8} />{action}{hasWa && <span className="font-normal opacity-80"> pe WhatsApp</span>}
             </button>
-            <a href={`tel:${site.telefon.tel}`} className="flex-1 rounded-full border border-aur/60 px-6 py-3.5 text-center font-semibold text-cioco transition hover:bg-crem sm:flex-none">
-              Sau sună: {site.telefon.afisat}
+            <a href={`tel:${site.telefon.tel}`} className="w-full rounded-full border border-aur/60 px-6 py-3.5 text-center font-semibold text-cioco transition hover:bg-crem sm:w-auto">
+              <Phone aria-hidden="true" className="mr-2 inline h-4 w-4 align-[-3px]" strokeWidth={1.8} />Sau sunați: {site.telefon.afisat}
             </a>
           </>
         )}

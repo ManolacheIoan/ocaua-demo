@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { MapPin } from "lucide-react";
 import { site } from "@/content/site";
 
 /** Harta Google se încarcă doar la cerere (mai rapid, fără cookie-uri terțe până la click). */
@@ -11,7 +12,7 @@ export function MapEmbed() {
         <iframe title={`Hartă: ${site.nume}`} src={site.google.embedUrl} className="h-full w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
       ) : (
         <button type="button" onClick={() => setOn(true)} className="flex h-full w-full flex-col items-center justify-center gap-2 text-cioco transition hover:bg-crem-2/60">
-          <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span className="grid h-14 w-14 place-items-center rounded-full border border-aur/40 bg-ivoriu text-aur-text"><MapPin aria-hidden="true" className="h-6 w-6" strokeWidth={1.4} /></span>
           <span className="font-semibold">Afișează harta Google</span>
           <span className="text-sm">{site.adresa.strada}, {site.adresa.localitate}</span>
         </button>

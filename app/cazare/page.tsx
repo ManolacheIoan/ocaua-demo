@@ -6,8 +6,9 @@ import { T } from "@/components/T";
 
 export const metadata: Metadata = {
   title: "Cazare",
-  description: "Camere de cazare la Ocaua lui Cuza, în Tecuci. Verifică disponibilitatea și trimite o cerere.",
+  description: "Camere de cazare la Ocaua lui Cuza, în Tecuci, la aceeași adresă cu restaurantul. Verificați disponibilitatea online sau la 0766 577 307.",
   alternates: { canonical: "cazare/" },
+  openGraph: { title: "Cazare | Ocaua lui Cuza, Tecuci", url: "cazare/" },
 };
 
 export default function CazarePage() {
@@ -15,7 +16,7 @@ export default function CazarePage() {
     .filter(([, v]) => arataLipsuri || are(v));
   return (
     <>
-      <PageHero eyebrow="Cazare în Tecuci" title="Cazare" text="Camere pentru oaspeți, la aceeași adresă cu restaurantul. Potrivit pentru invitații de la evenimente și pentru drumuri prin Tecuci." />
+      <PageHero photo="camera" eyebrow="Cazare în Tecuci" title="Cazare" text="Camere pentru oaspeți, la aceeași adresă cu restaurantul. Potrivit pentru invitații de la evenimente și pentru drumuri prin Tecuci." />
       <div className="mx-auto max-w-6xl px-5 py-12">
         <RoomCards level={2} />
         {info.length > 0 && (

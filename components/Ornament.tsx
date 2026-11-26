@@ -1,3 +1,5 @@
+import { Star } from "lucide-react";
+
 /** Ornament auriu inspirat din motivul ringului de dans. */
 export function Ornament({ className = "" }: { className?: string }) {
   return (
@@ -10,13 +12,12 @@ export function Ornament({ className = "" }: { className?: string }) {
   );
 }
 
+/** Stele pentru nota reală de pe Google (4,0). */
 export function Stars({ value = 4, className = "" }: { value?: number; className?: string }) {
   return (
     <span aria-hidden="true" className={`inline-flex gap-0.5 ${className}`}>
       {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 20 20" className="h-4 w-4" fill={i < value ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.2">
-          <path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7 4.9 17.4l1-5.6-4.1-4 5.7-.8z" />
-        </svg>
+        <Star key={i} className="h-4 w-4" strokeWidth={1.4} fill={i < value ? "currentColor" : "none"} />
       ))}
     </span>
   );

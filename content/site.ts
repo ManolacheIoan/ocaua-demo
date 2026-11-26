@@ -6,7 +6,7 @@
 export const TBD = "[de completat]";
 
 /** true = arată „[de completat]” evidențiat (lucru intern). false = ascunde câmpurile lipsă (aspect final). */
-export const arataLipsuri = false;
+export const arataLipsuri = true;
 
 /** Are valoare reală (nu e gol și nu e placeholder). */
 export const are = (v?: string) => !!v && !v.includes(TBD);
@@ -101,7 +101,7 @@ export const despre = {
   specialitati: TBD,
   repere: [
     { valoare: "1992", eticheta: "anul înființării" },
-    { valoare: "4,0 ★", eticheta: "pe Google, din peste 660 de recenzii" },
+    { valoare: "4,0", eticheta: "nota pe Google, din peste 660 de recenzii" },
     { valoare: "3 în 1", eticheta: "restaurant, cazare și evenimente" },
   ],
 };
