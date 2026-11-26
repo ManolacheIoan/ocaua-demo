@@ -36,6 +36,9 @@ export function RequestForm({ kind, preset = "" }: { kind: FormKind; preset?: st
       `Nume: ${g("nume")}`,
       `Telefon: ${g("telefon")}`,
       `${kind === "cazare" ? "Data sosirii" : "Data"}: ${roDate(g("data"))}`,
+      kind === "masa" && g("ora") && `Ora: ${g("ora")}`,
+      kind === "cazare" && `Data plecării: ${roDate(g("plecare"))}`,
+      kind === "eveniment" && `Tip eveniment: ${g("eveniment")}`,
       `Număr persoane: ${g("persoane")}`,
       g("mesaj") && `Mesaj: ${g("mesaj")}`,
     ].filter(Boolean).join("\n");
@@ -90,13 +93,35 @@ export function RequestForm({ kind, preset = "" }: { kind: FormKind; preset?: st
         <input className={field} id={`${id}-data`} name="data" type="date" ref={dateRef} required />
       </div>
       <div>
-        <label className={label} htmlFor={`${id}-pers`}>Număr persoane *</label>
+        <label className={label} htmlFor={`${id}-pers`}>{kind === "eveniment" ? "Număr invitați *" : "Număr persoane *"}</label>
         <input className={field} id={`${id}-pers`} name="persoane" type="number" inputMode="numeric" min={1} max={500} required />
       </div>
+      {kind === "masa" && (
+        <div className="sm:col-span-2">
+          <label className={label} htmlFor={`${id}-ora`}>Ora dorită</label>
+          <input className={field} id={`${id}-ora`} name="ora" type="time" min="08:00" max="23:30" step={900} />
+        </div>
+      )}
+      {kind === "cazare" && (
+        <div className="sm:col-span-2">
+          <label className={label} htmlFor={`${id}-plecare`}>Data plecării *</label>
+          <input className={field} id={`${id}-plecare`} name="plecare" type="date" required
+            onFocus={(e) => { const d = (ref.current?.elements.namedItem("data") as HTMLInputElement | null)?.value; if (d) e.currentTarget.min = d; }} />
+        </div>
+      )}
+      {kind === "eveniment" && (
+        <div className="sm:col-span-2">
+          <label className={label} htmlFor={`${id}-ev`}>Tipul evenimentului *</label>
+          <select className={field} id={`${id}-ev`} name="eveniment" required defaultValue="">
+            <option value="" disabled>Alegeți…</option>
+            <option>Botez</option><option>Aniversare</option><option>Cununie / nuntă</option><option>Masă festivă</option><option>Masă de firmă</option><option>Altul</option>
+          </select>
+        </div>
+      )}
       <div className="sm:col-span-2">
         <label className={label} htmlFor={`${id}-msg`}>Mesaj</label>
         <textarea className={field} id={`${id}-msg`} name="mesaj" rows={3} defaultValue={preset}
-          placeholder={kind === "cazare" ? "Număr de nopți, tipul camerei…" : kind === "eveniment" ? "Tipul evenimentului, numărul de invitați, preferințe…" : "Ora dorită, preferințe…"} />
+          placeholder={kind === "cazare" ? "Tipul camerei, câți adulți și copii…" : kind === "eveniment" ? "Preferințe de meniu, aranjamente, buget orientativ…" : "Ocazie, preferințe, scaun pentru copil…"} />
       </div>
       <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:flex-wrap">
         {formspreeReady ? (
@@ -124,7 +149,7 @@ export function RequestForm({ kind, preset = "" }: { kind: FormKind; preset?: st
       <p className="text-xs text-muted sm:col-span-2">Fără plată online. Rezervarea e confirmată de noi, telefonic.</p>
       <p role="status" aria-live="polite" className="text-sm font-medium text-cioco empty:hidden sm:col-span-2">
         {status === "ok" && "Mulțumim! Cererea a fost trimisă. Vă contactăm telefonic pentru confirmare."}
-        {status === "err" && `Cererea nu a putut fi trimisă. Încercați pe WhatsApp sau sunați la ${site.telefon.afisat}.`}
+        {status === "err" && `Cererea nu a putut fi trimisă (verificați conexiunea). Încercați pe WhatsApp sau sunați la ${site.telefon.afisat}.`}
         {status === "wa" && "Am deschis WhatsApp cu mesajul completat. Mai trebuie doar să apăsați „Trimite”."}
       </p>
     </form>
