@@ -12,15 +12,22 @@ export const arataLipsuri = false;
 export const are = (v?: string) => !!v && !v.includes(TBD);
 
 /*
- * POZE REALE: pune fișierele în public/poze/ și scrie numele aici (ex. "fatada.jpg").
- * Cât timp sunt goale, se afișează un placeholder elegant.
+ * POZE REALE DE LA LOCAL: pune fișierele în public/poze/ și scrie numele aici (ex. sala: "sala.jpg").
+ * Cât timp un câmp e gol, se folosește fotografia ilustrativă din content/images.ts (marcată „Foto ilustrativă”)
+ * sau, unde nu există una potrivită (ex. fațada), un placeholder elegant.
  */
-export const imagini = {
+export const imagini: Record<string, string> = {
   hero: "",
   fatada: "",
   sala: "",
+  ballroom: "",
+  platou: "",
   masa: "",
-  bucatarie: "",
+  mancare: "",
+  gratar: "",
+  ciorba: "",
+  desert: "",
+  vin: "",
   camera: "",
 };
 

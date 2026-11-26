@@ -8,9 +8,9 @@ import { Ornament, Stars } from "@/components/Ornament";
 import { Eyebrow, MenuList, RoomCards, SectionTitle, ani, btnDark, btnGhost, btnGhostLight, btnLight, callHref } from "@/components/Sections";
 
 const piloni = [
-  { titlu: "Restaurant", text: "Bucătărie românească pentru mesele de zi cu zi și de duminică.", href: "/meniu/", cta: "Vezi meniul", icon: "plate" as const, slot: "masa" as const },
-  { titlu: "Evenimente", text: "Sală elegantă pentru botezuri, aniversări și mese festive.", href: "/#evenimente", cta: "Descoperă sala", icon: "flower" as const, slot: "sala" as const },
-  { titlu: "Cazare", text: "Camere pentru oaspeți, la aceeași adresă cu restaurantul.", href: "/cazare/", cta: "Verifică disponibilitatea", icon: "bed" as const, slot: "camera" as const },
+  { titlu: "Restaurant", text: "Bucătărie românească pentru mesele de zi cu zi și de duminică.", href: "/meniu/", cta: "Vezi meniul", slot: "mancare" as const },
+  { titlu: "Evenimente", text: "Sală elegantă pentru botezuri, aniversări și mese festive.", href: "/#evenimente", cta: "Descoperă sala", slot: "sala" as const },
+  { titlu: "Cazare", text: "Camere pentru oaspeți, la aceeași adresă cu restaurantul.", href: "/cazare/", cta: "Verifică disponibilitatea", slot: "camera" as const },
 ];
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
           </div>
           <div className="relative mx-auto w-full max-w-md">
             <div aria-hidden="true" className="arch absolute -inset-3 border border-aur/40" />
-            <Photo slot="hero" alt="Sala de evenimente Ocaua lui Cuza" icon="flower" tone="dark" priority className="arch aspect-[4/5] w-full shadow-[0_30px_60px_-30px_rgb(58_36_25/.6)]" />
+            <Photo name="hero" priority sizes="(min-width: 768px) 45vw, 100vw" className="arch aspect-[4/5] w-full shadow-[0_30px_60px_-30px_rgb(58_36_25/.6)]" />
             <div className="absolute -bottom-5 -left-3 rounded-2xl border border-aur/25 bg-ivoriu px-5 py-3 shadow-lg sm:-left-8">
               <p className="font-serif text-3xl leading-none text-cioco">{ani}</p>
               <p className="mt-1 text-[11px] tracking-[.2em] text-muted uppercase">ani de ospitalitate</p>
@@ -60,7 +60,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl gap-5 px-5 py-12 md:grid-cols-3">
           {piloni.map((p) => (
             <Link key={p.titlu} href={p.href} className="reveal lift group overflow-hidden rounded-3xl border border-aur/20 bg-white">
-              <Photo slot={p.slot} alt={p.titlu} icon={p.icon} className="aspect-[16/9]" />
+              <Photo name={p.slot} sizes="(min-width: 768px) 33vw, 100vw" className="aspect-[16/9]" />
               <div className="p-6">
                 <h2 className="font-serif text-2xl text-cioco">{p.titlu}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{p.text}</p>
@@ -75,9 +75,9 @@ export default function Home() {
       <section aria-labelledby="despre" className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div className="reveal grid grid-cols-5 gap-4">
-            <Photo slot="fatada" alt="Clădirea Ocaua lui Cuza" icon="house" className="col-span-3 aspect-[3/4] rounded-3xl" />
+            <Photo name="fatada" alt="Fațada clădirii Ocaua lui Cuza" icon="building" label="Fațada" className="col-span-3 aspect-[3/4] rounded-3xl" />
             <div className="col-span-2 flex flex-col gap-4 pt-10">
-              <Photo slot="bucatarie" alt="Preparate din bucătăria Ocaua lui Cuza" icon="plate" className="aspect-square rounded-3xl" />
+              <Photo name="mancare" sizes="25vw" className="aspect-square rounded-3xl" />
               <div className="rounded-3xl bg-cioco p-5 text-center text-ivoriu">
                 <p className="font-serif text-4xl">{site.anInfiintare}</p>
                 <p className="mt-1 text-[10px] tracking-[.2em] text-sampanie uppercase">anul înființării</p>
@@ -107,7 +107,7 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-[.9fr_1.1fr]">
           <div className="reveal relative mx-auto w-full max-w-sm">
             <div aria-hidden="true" className="arch absolute -inset-3 border border-sampanie/40" />
-            <Photo slot="sala" alt="Masă aranjată pentru eveniment în sala Ocaua lui Cuza" icon="flower" className="arch aspect-[4/5] w-full" />
+            <Photo name="sala" sizes="(min-width: 768px) 40vw, 100vw" className="arch aspect-[4/5] w-full" />
           </div>
           <div className="reveal">
             <SectionTitle light eyebrow="Evenimente" title="Momentele importante, în sala potrivită" id="evenimente" lead={evenimente.intro} />

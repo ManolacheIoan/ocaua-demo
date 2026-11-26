@@ -1,38 +1,63 @@
+import { Building2, BedDouble, ImageIcon, UtensilsCrossed, Wine, type LucideIcon } from "lucide-react";
 import { imagini } from "@/content/site";
+import { stock, type StockKey } from "@/content/images";
 
-/*
- * FOTO: dacă imagini[slot] are un fișier (public/poze/...), se afișează poza reală.
- * Altfel, un placeholder elegant (gradient + iconiță) — se înlocuiește cu poze reale de la local.
- */
-const icons = {
-  plate: "M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0Zm4 0a4 4 0 1 0 8 0 4 4 0 0 0-8 0",
-  bed: "M3 18V6m0 8h18v4M3 14v-4h7a3 3 0 0 1 3 3v1m8 0v-2a3 3 0 0 0-3-3h-5",
-  glass: "M8 3h8l-1 7a3 3 0 0 1-6 0L8 3Zm4 10v8m-4 0h8",
-  house: "M3 11 12 4l9 7v9H3v-9Zm6 9v-6h6v6",
-  flower: "M12 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0-5c2 2 2 3 0 5-2-2-2-3 0-5Zm0 13c2 2 2 3 0 5-2-2-2-3 0-5ZM3 11c2-2 3-2 5 0-2 2-3 2-5 0Zm13 0c2-2 3-2 5 0-2 2-3 2-5 0Z",
-};
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const icons = { building: Building2, bed: BedDouble, plate: UtensilsCrossed, glass: Wine, image: ImageIcon } satisfies Record<string, LucideIcon>;
 
-export function Photo({
-  slot, alt, icon = "plate", className = "", tone = "light", priority = false,
-}: {
-  slot: keyof typeof imagini; alt: string; icon?: keyof typeof icons; className?: string; tone?: "light" | "dark"; priority?: boolean;
-}) {
-  const file = imagini[slot];
-  if (file) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={`${base}/poze/${file}`} alt={alt} className={`object-cover ${className}`} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} />;
+type Props = {
+  name: StockKey | "fatada";
+  alt?: string;
+  className?: string;
+  /** atribut sizes pentru srcset (ex. "(min-width: 1024px) 50vw, 100vw") */
+  sizes?: string;
+  priority?: boolean;
+  icon?: keyof typeof icons;
+  label?: string;
+  badge?: boolean;
+};
+
+/**
+ * Imagine: 1) poza reală din public/poze (imagini[name]), 2) foto ilustrativă Unsplash (WebP responsive),
+ * 3) placeholder premium la dimensiunea finală. Containerul (className) stabilește dimensiunea/raportul.
+ */
+export function Photo({ name, alt, className = "", sizes = "100vw", priority = false, icon = "image", label, badge = true }: Props) {
+  const real = imagini[name];
+  const s = name in stock ? stock[name as StockKey] : undefined;
+  const img = "absolute inset-0 h-full w-full object-cover";
+  const load = { loading: priority ? ("eager" as const) : ("lazy" as const), fetchPriority: priority ? ("high" as const) : ("auto" as const), decoding: "async" as const };
+
+  if (real || s) {
+    return (
+      <div className={`relative overflow-hidden bg-crem-2 ${className}`}>
+        {real ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={`${base}/poze/${real}`} alt={alt ?? s?.alt ?? ""} className={img} {...load} />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`${base}/images/${name}-1024.webp`}
+            srcSet={[640, 1024, 1600].map((w) => `${base}/images/${name}-${w}.webp ${w}w`).join(", ")}
+            sizes={sizes} width={s!.w} height={s!.h} alt={alt ?? s!.alt} className={img} {...load}
+          />
+        )}
+        {!real && badge && (
+          <span className="absolute right-3 bottom-3 rounded-full bg-cioco-2/70 px-2.5 py-1 text-[10px] tracking-wide text-ivoriu backdrop-blur-sm">Foto ilustrativă</span>
+        )}
+      </div>
+    );
   }
-  const bg = tone === "dark"
-    ? "bg-[radial-gradient(120%_90%_at_30%_15%,#6b4a35_0%,#3a2419_55%,#24150e_100%)] text-sampanie"
-    : "bg-[radial-gradient(120%_90%_at_30%_15%,#fffaf2_0%,#ecdfca_55%,#d9c3a0_100%)] text-aur-text";
+
+  const Icon = icons[icon];
   return (
-    <div role="img" aria-label={alt} className={`relative flex items-center justify-center overflow-hidden ${bg} ${className}`}>
+    <div role="img" aria-label={alt ?? "Loc pentru fotografie"} className={`relative flex items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_30%_15%,#fffaf2_0%,#ecdfca_55%,#d9c3a0_100%)] text-aur-text ${className}`}>
       <div className="damask absolute inset-0 opacity-70" />
-      <div className="absolute inset-3 rounded-[inherit] border border-current/25" />
-      <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="relative opacity-70">
-        <path d={icons[icon]} />
-      </svg>
+      <div className="absolute inset-3 rounded-[inherit] border border-aur/40" />
+      <div className="relative flex flex-col items-center gap-3 px-6 text-center">
+        <Icon aria-hidden="true" className="h-9 w-9" strokeWidth={1} />
+        {label && <span className="font-serif text-lg text-cioco">{label}</span>}
+        <span className="text-[11px] tracking-[.18em] uppercase">Foto — se înlocuiește cu poza reală</span>
+      </div>
     </div>
   );
 }

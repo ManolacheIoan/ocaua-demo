@@ -76,7 +76,7 @@ export function RoomCards({ level = 3 }: { level?: 2 | 3 }) {
   if (!list.length) {
     return (
       <div className="reveal grid overflow-hidden rounded-3xl border border-aur/20 bg-white md:grid-cols-2">
-        <Photo slot="camera" alt="Cameră de cazare la Ocaua lui Cuza" icon="bed" className="aspect-[4/3] md:aspect-auto md:h-full" />
+        <Photo name="camera" sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[4/3] md:aspect-auto md:h-full" />
         <div className="p-8 sm:p-10">
           <H className="font-serif text-2xl text-cioco">Camere pentru oaspeți</H>
           <p className="mt-3 leading-relaxed text-muted">
@@ -96,7 +96,7 @@ export function RoomCards({ level = 3 }: { level?: 2 | 3 }) {
     <div className="grid gap-5 md:grid-cols-3">
       {list.map((c, i) => (
         <article key={i} className="reveal lift flex flex-col overflow-hidden rounded-3xl border border-aur/20 bg-white">
-          <Photo slot="camera" alt={`Fotografie: ${c.tip}`} icon="bed" className="aspect-[4/3]" />
+          <Photo name="camera" sizes="(min-width: 768px) 33vw, 100vw" className="aspect-[4/3]" />
           <div className="flex flex-1 flex-col p-6">
             <H className="font-serif text-xl text-cioco"><T>{c.tip}</T></H>
             <p className="mt-2 text-sm text-muted"><T>{c.descriere}</T></p>
