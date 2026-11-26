@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, site } from "@/content/site";
+import { MobileMenu } from "./MobileMenu";
 
 export function DemoBand() {
   if (!site.bandaDemo) return null;
@@ -39,16 +40,7 @@ export function Header() {
           <a href={`tel:${site.telefon.tel}`} className="text-sm font-semibold text-cioco hover:text-aur-text">{site.telefon.afisat}</a>
           <Link href="/#rezervare" className="rounded-full bg-cioco px-5 py-2.5 text-sm font-semibold text-ivoriu shadow-sm transition hover:bg-cioco-2">Rezervă</Link>
         </div>
-        <details className="relative lg:hidden">
-          <summary className="cursor-pointer list-none rounded-full border border-aur/40 px-4 py-2 text-sm font-medium">Meniu</summary>
-          <nav aria-label="Navigare mobil" className="absolute right-0 mt-2 w-56 rounded-2xl border border-aur/20 bg-ivoriu p-2 shadow-xl">
-            <ul>
-              {nav.map((n) => (
-                <li key={n.href}><Link href={n.href} className="block rounded-xl px-4 py-2.5 hover:bg-crem">{n.label}</Link></li>
-              ))}
-            </ul>
-          </nav>
-        </details>
+        <MobileMenu />
       </div>
     </header>
   );

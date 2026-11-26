@@ -9,7 +9,7 @@ import { Eyebrow, MenuList, RoomCards, SectionTitle, ani, btnDark, btnGhost, btn
 
 const piloni = [
   { titlu: "Restaurant", text: "Bucătărie românească pentru mesele de zi cu zi și de duminică.", href: "/meniu/", cta: "Vezi meniul", icon: "plate" as const, slot: "masa" as const },
-  { titlu: "Evenimente", text: "Sală elegantă pentru botezuri, aniversări și mese festive.", href: "/#evenimente", cta: "Cere o ofertă", icon: "flower" as const, slot: "sala" as const },
+  { titlu: "Evenimente", text: "Sală elegantă pentru botezuri, aniversări și mese festive.", href: "/#evenimente", cta: "Descoperă sala", icon: "flower" as const, slot: "sala" as const },
   { titlu: "Cazare", text: "Camere pentru oaspeți, la aceeași adresă cu restaurantul.", href: "/cazare/", cta: "Verifică disponibilitatea", icon: "bed" as const, slot: "camera" as const },
 ];
 
@@ -33,7 +33,7 @@ export default function Home() {
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href={callHref} className={btnDark}>Sună acum · {site.telefon.afisat}</a>
-              <a href="#rezervare" className={btnGhost}>Rezervă o masă</a>
+              <a href="#rezervare-masa" className={btnGhost}>Rezervă o masă</a>
             </div>
             <a href={site.google.mapsUrl} target="_blank" rel="noopener" className="mt-8 inline-flex items-center gap-3 rounded-full border border-aur/25 bg-white/70 py-2 pr-5 pl-2 text-sm shadow-sm transition hover:bg-white">
               <span className="grid h-9 w-9 place-items-center rounded-full bg-cioco font-serif text-sm text-ivoriu">{site.google.rating}</span>
@@ -130,7 +130,7 @@ export default function Home() {
               ))}
             </ol>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#rezervare" className={btnLight}>Cere o ofertă pentru eveniment</a>
+              <a href="#rezervare-eveniment" className={btnLight}>Cere o ofertă pentru eveniment</a>
               <a href={callHref} className={btnGhostLight}>Sună: {site.telefon.afisat}</a>
             </div>
           </div>
@@ -174,6 +174,9 @@ export default function Home() {
 
       {/* REZERVARE + CONTACT */}
       <section aria-labelledby="rezervare" className="relative overflow-hidden bg-crem">
+        <span id="rezervare-masa" aria-hidden="true" className="absolute top-0" />
+        <span id="rezervare-cazare" aria-hidden="true" className="absolute top-0" />
+        <span id="rezervare-eveniment" aria-hidden="true" className="absolute top-0" />
         <div className="damask absolute inset-0 opacity-50" />
         <div className="relative mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-[1.15fr_.85fr]">
           <div className="reveal rounded-3xl border border-aur/20 bg-white p-6 shadow-[0_30px_60px_-40px_rgb(58_36_25/.5)] sm:p-9">

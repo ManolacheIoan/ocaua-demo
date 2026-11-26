@@ -127,7 +127,7 @@ export function PageHero({ title, text, eyebrow }: { title: string; text: string
   );
 }
 
-export function CtaBand() {
+export function CtaBand({ tip = "masa" }: { tip?: "masa" | "cazare" | "eveniment" }) {
   return (
     <section aria-label="Rezervare rapidă" className="bg-crem">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-10 text-center md:flex-row md:text-left">
@@ -137,7 +137,7 @@ export function CtaBand() {
         </div>
         <div className="flex flex-wrap justify-center gap-3">
           <a href={callHref} className={btnDark}>Sună: {site.telefon.afisat}</a>
-          <Link href="/#rezervare" className={btnGhost}>Cerere online</Link>
+          <Link href={`/#rezervare-${tip}`} className={btnGhost}>Cerere online</Link>
         </div>
       </div>
     </section>

@@ -33,7 +33,7 @@ export default function CazarePage() {
           <RequestForm kind="cazare" />
         </section>
       </div>
-      <CtaBand />
+      <CtaBand tip="cazare" />
     </>
   );
 }
