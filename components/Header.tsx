@@ -12,7 +12,7 @@ export function DemoBand() {
 
 function Logo() {
   return (
-    <Link href="/" className="group flex items-center gap-3" aria-label={`${site.nume} — prima pagină`}>
+    <Link href="/" className="group flex items-center gap-3">
       <span aria-hidden="true" className="grid h-10 w-10 place-items-center rounded-full border border-aur/60 font-serif text-lg text-aur-text">O</span>
       <span className="leading-tight">
         <span className="block font-serif text-lg font-semibold text-cioco">{site.numeScurt}</span>
