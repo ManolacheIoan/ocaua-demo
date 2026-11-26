@@ -50,7 +50,7 @@ export function Gallery({ items }: { items: { k: StockKey; span?: string }[] }) 
         className="m-auto max-h-[92vh] w-[min(94vw,72rem)] overflow-visible bg-transparent p-0 backdrop:bg-cioco-2/90">
         <figure className="relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src(cur)} alt={stock[cur].alt} className="max-h-[80vh] w-full rounded-2xl object-contain" />
+          <img src={src(cur)} alt={stock[cur].alt} loading="lazy" decoding="async" className="max-h-[80vh] w-full rounded-2xl object-contain" />
           <figcaption className="mt-3 flex items-center justify-between gap-4 text-sm text-crem/90">
             <span>{stock[cur].alt}{!imagini[cur] && " · Foto ilustrativă"}</span>
             <span aria-live="polite">{i + 1} / {n}</span>

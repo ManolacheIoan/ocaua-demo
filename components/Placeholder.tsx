@@ -1,3 +1,4 @@
+import { preload } from "react-dom";
 import { Building2, BedDouble, ImageIcon, UtensilsCrossed, Wine, type LucideIcon } from "lucide-react";
 import { imagini } from "@/content/site";
 import { stock, type StockKey } from "@/content/images";
@@ -28,6 +29,9 @@ export function Photo({ name, alt, className = "", sizes = "100vw", priority = f
   const load = { loading: priority ? ("eager" as const) : ("lazy" as const), fetchPriority: priority ? ("high" as const) : ("auto" as const), decoding: "async" as const };
 
   if (real || s) {
+    const srcSet = [640, 1024, 1600].map((w) => `${base}/images/${name}-${w}.webp ${w}w`).join(", ");
+    // imaginea principală (LCP) se preîncarcă din <head>, cu prioritate mare
+    if (priority && !real) preload(`${base}/images/${name}-1024.webp`, { as: "image", imageSrcSet: srcSet, imageSizes: sizes, fetchPriority: "high" });
     return (
       <div className={`relative overflow-hidden bg-crem-2 ${className}`}>
         {real ? (
@@ -37,7 +41,7 @@ export function Photo({ name, alt, className = "", sizes = "100vw", priority = f
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={`${base}/images/${name}-1024.webp`}
-            srcSet={[640, 1024, 1600].map((w) => `${base}/images/${name}-${w}.webp ${w}w`).join(", ")}
+            srcSet={srcSet}
             sizes={sizes} width={s!.w} height={s!.h} alt={alt ?? s!.alt} className={img} {...load}
           />
         )}
