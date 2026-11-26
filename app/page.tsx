@@ -46,15 +46,15 @@ export default function Home() {
         <dl className="grid grid-cols-3 divide-x divide-aur/20 rounded-3xl border border-aur/20 bg-ivoriu shadow-[0_24px_50px_-30px_rgb(36_21_14/.45)]">
           <div className="flex flex-col-reverse px-3 py-5 text-center sm:px-6">
             <dt className="mt-1 text-[11px] leading-snug text-muted sm:text-xs">pe Google, din peste 660 de recenzii</dt>
-            <dd className="flex items-center justify-center gap-2 font-serif text-2xl text-cioco sm:text-3xl">{site.google.rating}<Star aria-hidden="true" className="h-5 w-5 text-aur" fill="currentColor" strokeWidth={0} /></dd>
+            <dd className="flex items-center justify-center gap-2 font-serif text-xl whitespace-nowrap text-cioco sm:text-3xl">{site.google.rating}<Star aria-hidden="true" className="h-5 w-5 text-aur" fill="currentColor" strokeWidth={0} /></dd>
           </div>
           <div className="flex flex-col-reverse px-3 py-5 text-center sm:px-6">
             <dt className="mt-1 text-[11px] leading-snug text-muted sm:text-xs">firmă locală, din {site.anInfiintare}</dt>
-            <dd className="font-serif text-2xl text-cioco sm:text-3xl">{ani} de ani</dd>
+            <dd className="font-serif text-xl whitespace-nowrap text-cioco sm:text-3xl">{ani} de ani</dd>
           </div>
           <div className="flex flex-col-reverse px-3 py-5 text-center sm:px-6">
             <dt className="mt-1 text-[11px] leading-snug text-muted sm:text-xs">restaurant, cazare și evenimente</dt>
-            <dd className="font-serif text-2xl text-cioco sm:text-3xl">3 în 1</dd>
+            <dd className="font-serif text-xl whitespace-nowrap text-cioco sm:text-3xl">3 în 1</dd>
           </div>
         </dl>
       </div>
@@ -166,7 +166,7 @@ export default function Home() {
         <Gallery items={[
           { k: "sala", span: "col-span-2 row-span-2" }, { k: "platou" }, { k: "masa" },
           { k: "gratar", span: "row-span-2" }, { k: "vin", span: "row-span-2" }, { k: "ballroom", span: "col-span-2" },
-          { k: "desert" }, { k: "hero", span: "md:col-span-2" },
+          { k: "desert" }, { k: "hero", span: "md:col-span-3" },
         ]} />
       </section>
 
