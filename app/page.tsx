@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <p className="mt-6 text-sm text-crem/85">sau sunați direct: <a href={callHref} className="font-semibold text-ivoriu underline-offset-4 hover:underline">{site.telefon.afisat}</a></p>
         </div>
-        <span className="absolute right-4 bottom-20 rounded-full bg-cioco-2/60 px-2.5 py-1 text-[10px] tracking-wide text-crem/90 backdrop-blur-sm sm:bottom-24">Foto ilustrativă</span>
+        <span className="absolute right-4 bottom-20 rounded-full bg-cioco-2/60 px-2.5 py-1 text-[10px] tracking-wide text-crem/90 sm:bottom-24">Foto ilustrativă</span>
       </section>
 
       {/* BARA DE ÎNCREDERE — date reale */}

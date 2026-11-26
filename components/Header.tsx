@@ -36,7 +36,7 @@ export function Header() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", onScroll); };
   }, []);
   return (
-    <header data-scrolled={scrolled} className="site-header sticky top-0 z-40 border-b border-aur/20 bg-ivoriu/90 backdrop-blur-md">
+    <header data-scrolled={scrolled} className="site-header sticky top-0 z-40 border-b border-aur/20 bg-ivoriu/90">
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-cioco focus:px-3 focus:py-2 focus:text-white">Sari la conținut</a>
       <div className="bar mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5">
         <Logo />
@@ -63,7 +63,7 @@ export function Header() {
 
 export function CallBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_1fr_auto] gap-2 border-t border-aur/20 bg-ivoriu/95 p-2 pb-[max(.5rem,env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_1fr_auto] gap-2 border-t border-aur/20 bg-ivoriu/95 p-2 pb-[max(.5rem,env(safe-area-inset-bottom))] lg:hidden">
       <a href={`tel:${site.telefon.tel}`} className="inline-flex items-center justify-center gap-2 rounded-full bg-cioco py-3 text-sm font-semibold text-ivoriu">
         <Phone aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />Sună acum
       </a>

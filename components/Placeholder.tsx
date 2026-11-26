@@ -46,7 +46,7 @@ export function Photo({ name, alt, className = "", sizes = "100vw", priority = f
           />
         )}
         {!real && badge && (
-          <span className="absolute right-3 bottom-3 rounded-full bg-cioco-2/70 px-2.5 py-1 text-[10px] tracking-wide text-ivoriu backdrop-blur-sm">Foto ilustrativă</span>
+          <span className="absolute right-3 bottom-3 rounded-full bg-cioco-2/70 px-2.5 py-1 text-[10px] tracking-wide text-ivoriu">Foto ilustrativă</span>
         )}
       </div>
     );
