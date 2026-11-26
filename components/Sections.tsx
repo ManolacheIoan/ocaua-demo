@@ -13,12 +13,13 @@ export function SectionTitle({ eyebrow, title, id }: { eyebrow: string; title: s
   );
 }
 
-export function MenuList({ limit }: { limit?: number }) {
+export function MenuList({ limit, level = 3 }: { limit?: number; level?: 2 | 3 }) {
+  const H = level === 2 ? "h2" : "h3";
   return (
     <div className="grid gap-8 md:grid-cols-2">
       {meniu.map((c) => (
         <section key={c.id} id={c.id} aria-labelledby={`h-${c.id}`} className="reveal rounded-2xl border border-lemn/15 bg-white p-6 shadow-sm">
-          <h3 id={`h-${c.id}`} className="font-serif text-2xl text-bordo">{c.titlu}</h3>
+          <H id={`h-${c.id}`} className="font-serif text-2xl text-bordo">{c.titlu}</H>
           <ul className="mt-4 divide-y divide-lemn/10">
             {c.produse.slice(0, limit).map((p, i) => (
               <li key={i} className="flex items-start justify-between gap-4 py-3">
@@ -36,14 +37,15 @@ export function MenuList({ limit }: { limit?: number }) {
   );
 }
 
-export function RoomCards() {
+export function RoomCards({ level = 3 }: { level?: 2 | 3 }) {
+  const H = level === 2 ? "h2" : "h3";
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {camere.map((c, i) => (
         <article key={i} className="reveal flex flex-col overflow-hidden rounded-2xl border border-lemn/15 bg-white shadow-sm">
           <Placeholder label="Foto cameră" icon="bed" className="aspect-[4/3] rounded-none" />
           <div className="flex flex-1 flex-col p-6">
-            <h3 className="font-serif text-xl text-bordo"><T>{c.tip}</T></h3>
+            <H className="font-serif text-xl text-bordo"><T>{c.tip}</T></H>
             <p className="mt-2 text-sm text-muted"><T>{c.descriere}</T></p>
             <p className="mt-4 text-sm font-semibold">Dotări</p>
             <ul className="mt-1 list-inside list-disc text-sm text-muted">

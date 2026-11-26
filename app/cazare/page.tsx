@@ -21,7 +21,7 @@ export default function CazarePage() {
     <>
       <PageHero title="Cazare" text="Camere pentru oaspeți în Tecuci, la același loc cu restaurantul." />
       <div className="mx-auto max-w-6xl px-4 py-14">
-        <RoomCards />
+        <RoomCards level={2} />
         <dl className="mt-14 grid gap-4 sm:grid-cols-4">
           {info.map(([k, v]) => (
             <div key={k} className="rounded-xl bg-white p-5 shadow-sm">

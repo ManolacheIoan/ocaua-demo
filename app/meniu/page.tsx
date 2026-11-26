@@ -19,7 +19,7 @@ export default function MeniuPage() {
             <a key={c.id} href={`#${c.id}`} className="rounded-full border border-lemn/30 bg-white px-4 py-2 text-sm font-medium hover:border-bordo hover:text-bordo">{c.titlu}</a>
           ))}
         </nav>
-        <MenuList />
+        <MenuList level={2} />
         <Link href="/#rezervare" className="mt-12 inline-block rounded-lg bg-bordo px-6 py-3 font-semibold text-white hover:bg-bordo-2">Rezervă o masă</Link>
       </div>
     </>
