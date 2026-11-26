@@ -13,7 +13,7 @@ export const waHref = site.telefon.whatsapp ? `https://wa.me/${site.telefon.what
 
 /** Fotografia ilustrativă pentru fiecare categorie de meniu. */
 export const fotoCategorie: Record<string, StockKey> = {
-  ciorbe: "ciorba", "feluri-principale": "mancare", gratar: "gratar", deserturi: "desert", bauturi: "vin",
+  ciorbe: "ciorba", "feluri-principale": "platou", gratar: "gratar", deserturi: "desert", bauturi: "vin",
 };
 
 export function Eyebrow({ children, light = false }: { children: string; light?: boolean }) {
@@ -54,7 +54,7 @@ export function MenuTiles() {
             <Photo name={fotoCategorie[c.id]} badge={false} sizes="(min-width: 1024px) 20vw, 50vw" className={i === 4 ? "aspect-[2/1] lg:aspect-[3/4]" : "aspect-[3/4]"} />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-cioco-2/90 via-cioco-2/25 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-              <p className="font-serif text-xs text-sampanie italic">{String(i + 1).padStart(2, "0")}</p>
+              <p className="hidden font-serif text-xs text-sampanie italic sm:block">{String(i + 1).padStart(2, "0")}</p>
               <h3 className="font-serif text-xl text-ivoriu sm:text-2xl">{c.titlu}</h3>
               <p className="mt-0.5 hidden text-xs text-crem/90 sm:block">{c.subtitlu}</p>
             </div>
@@ -118,7 +118,7 @@ export function RoomCards({ level = 3 }: { level?: 2 | 3 }) {
     <div className="grid gap-5 md:grid-cols-3">
       {list.map((c, i) => (
         <article key={i} className="reveal lift zoom flex flex-col overflow-hidden rounded-3xl border border-aur/20 bg-white">
-          <Photo name="camera" sizes="(min-width: 768px) 33vw, 100vw" className="aspect-[4/3]" />
+          <Photo name={(["camera", "camera2", "camera3"] as const)[i % 3]} sizes="(min-width: 768px) 33vw, 100vw" className="aspect-[4/3]" />
           <div className="flex flex-1 flex-col p-6">
             <div className="flex items-start gap-3">
               <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-crem text-aur-text"><I icon={BedDouble} /></span>

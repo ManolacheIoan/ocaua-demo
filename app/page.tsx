@@ -10,7 +10,7 @@ import { Ornament, Stars } from "@/components/Ornament";
 import { Eyebrow, I, MenuTiles, RoomCards, SectionTitle, ani, btnDark, btnGhost, btnGhostLight, btnLight, callHref, waHref } from "@/components/Sections";
 
 const piloni = [
-  { titlu: "Restaurant", text: "Bucătărie românească, pentru mesele de zi cu zi și pentru cele de duminică.", href: "/meniu/", cta: "Vezi meniul", foto: "mancare" as const },
+  { titlu: "Restaurant", text: "Bucătărie românească, pentru mesele de zi cu zi și pentru cele de duminică.", href: "/meniu/", cta: "Vezi meniul", foto: "ciorba" as const },
   { titlu: "Evenimente", text: "Sală elegantă pentru botezuri, aniversări și mese festive.", href: "/#evenimente", cta: "Descoperă sala", foto: "sala" as const },
   { titlu: "Cazare", text: "Camere pentru oaspeți, la aceeași adresă cu restaurantul.", href: "/cazare/", cta: "Vezi camerele", foto: "camera" as const },
 ];
@@ -164,7 +164,7 @@ export default function Home() {
       <section aria-labelledby="galerie" className="mx-auto max-w-6xl px-5 py-16">
         <SectionTitle eyebrow="Galerie" title="Atmosfera de la Ocaua" id="galerie" />
         <Gallery items={[
-          { k: "sala", span: "col-span-2 row-span-2" }, { k: "platou" }, { k: "ciorba" },
+          { k: "sala", span: "col-span-2 row-span-2" }, { k: "platou" }, { k: "masa" },
           { k: "gratar", span: "row-span-2" }, { k: "vin", span: "row-span-2" }, { k: "ballroom", span: "col-span-2" },
           { k: "desert" }, { k: "hero", span: "md:col-span-2" },
         ]} />

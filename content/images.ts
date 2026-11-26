@@ -11,12 +11,13 @@ export const stock = {
   ballroom: { w: 1600, h: 1067, alt: "Sală elegantă cu candelabre și mese lungi pregătite pentru eveniment", autor: "Lucas T Photography", profil: "https://unsplash.com/@lucastphotography", sursa: "https://unsplash.com/photos/T5v5i67QYGk" },
   platou: { w: 1600, h: 1067, alt: "Platou bogat cu aperitive, brânzeturi, mezeluri și fructe", autor: "We The Creators", profil: "https://unsplash.com/@wethecreators", sursa: "https://unsplash.com/photos/QVGVxz5SN5Y" },
   masa: { w: 1600, h: 2134, alt: "Masă cu față de masă albă, pâine și flori", autor: "Mantas Sinkevičius", profil: "https://unsplash.com/@mantasink", sursa: "https://unsplash.com/photos/Lpgei3ONE5Y" },
-  mancare: { w: 1600, h: 1066, alt: "Mai multe preparate servite pe o masă din lemn", autor: "Scott Greer", profil: "https://unsplash.com/@sgreer", sursa: "https://unsplash.com/photos/81yZExqt-J8" },
   gratar: { w: 1600, h: 2400, alt: "Frigărui de carne pe grătar, la jar", autor: "Олег Мороз", profil: "https://unsplash.com/@tengyart", sursa: "https://unsplash.com/photos/PpHXk5lH_Uk" },
   ciorba: { w: 1600, h: 1066, alt: "Ciorbă cu smântână și verdeață, în bol alb", autor: "Rasmus Gundorff Sæderup", profil: "https://unsplash.com/@rasmusgs", sursa: "https://unsplash.com/photos/U9DW1GGTTXw" },
   desert: { w: 1600, h: 2134, alt: "Felie de prăjitură cu caramel, pe farfurie neagră", autor: "Aliona Gumeniuk", profil: "https://unsplash.com/@agumeniuk", sursa: "https://unsplash.com/photos/GAauSStia3s" },
   vin: { w: 1600, h: 2400, alt: "Vin roșu turnat într-un pahar, pe o masă de restaurant", autor: "Alev Takil", profil: "https://unsplash.com/@alevtakil", sursa: "https://unsplash.com/photos/dR8t0L8YXsI" },
   camera: { w: 1600, h: 1067, alt: "Cameră de hotel luminoasă, cu pat dublu și tonuri calde", autor: "Clay Banks", profil: "https://unsplash.com/@claybanks", sursa: "https://unsplash.com/photos/yOs9Zc5JvTw" },
+  camera2: { w: 1600, h: 1066, alt: "Pat cu tăblie din lemn masiv și veioză, în lumină caldă", autor: "Annie Spratt", profil: "https://unsplash.com/@anniespratt", sursa: "https://unsplash.com/photos/rBJLZhOVHtw" },
+  camera3: { w: 1600, h: 1066, alt: "Cameră de hotel cu pat matrimonial și lumină ambientală", autor: "Markus Winkler", profil: "https://unsplash.com/@markuswinkler", sursa: "https://unsplash.com/photos/zk3DLNjeObQ" },
 } satisfies Record<string, StockImage>;
 
 export type StockKey = keyof typeof stock;

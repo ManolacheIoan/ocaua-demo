@@ -23,12 +23,13 @@ export const imagini: Record<string, string> = {
   ballroom: "",
   platou: "",
   masa: "",
-  mancare: "",
   gratar: "",
   ciorba: "",
   desert: "",
   vin: "",
   camera: "",
+  camera2: "",
+  camera3: "",
 };
 
 export const site = {
