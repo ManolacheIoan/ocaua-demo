@@ -23,7 +23,10 @@ export const metadata: Metadata = {
     title: `${site.nume} – Tecuci`,
     description: site.descriere,
     url: "./",
+    images: [{ url: "og.jpg", width: 1200, height: 630, alt: `${site.nume}, Tecuci` }],
   },
+  twitter: { card: "summary_large_image", title: `${site.nume} – Tecuci`, description: site.descriere, images: ["og.jpg"] },
+  formatDetection: { telephone: true },
 };
 
 export const viewport: Viewport = { themeColor: "#3a2419" };
@@ -46,6 +49,9 @@ const jsonLd = {
     addressCountry: a.tara,
   },
   hasMap: site.google.mapsUrl,
+  image: SITE_URL + "/og.jpg",
+  areaServed: "Tecuci, județul Galați",
+  acceptsReservations: true,
   ...(site.facebook.url.startsWith("http") ? { sameAs: [site.facebook.url] } : {}),
 };
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { og } from "@/lib";
 import { CtaBand, PageHero } from "@/components/Sections";
 import { MenuFilter } from "@/components/MenuFilter";
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   title: "Meniu",
   description: "Meniul restaurantului Ocaua lui Cuza din Tecuci: ciorbe, feluri principale, grătar, deserturi și băuturi. Rezervări la 0766 577 307.",
   alternates: { canonical: "meniu/" },
-  openGraph: { title: "Meniu | Ocaua lui Cuza, Tecuci", url: "meniu/" },
+  openGraph: og("Meniu | Ocaua lui Cuza, Tecuci", "meniu/"),
 };
 
 export default function MeniuPage() {

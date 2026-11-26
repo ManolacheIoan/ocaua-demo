@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { og } from "@/lib";
 import { are, arataLipsuri, cazareInfo } from "@/content/site";
 import { CtaBand, PageHero, RoomCards } from "@/components/Sections";
 import { RequestForm } from "@/components/RequestForm";
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   title: "Cazare",
   description: "Camere de cazare la Ocaua lui Cuza, în Tecuci, la aceeași adresă cu restaurantul. Verificați disponibilitatea online sau la 0766 577 307.",
   alternates: { canonical: "cazare/" },
-  openGraph: { title: "Cazare | Ocaua lui Cuza, Tecuci", url: "cazare/" },
+  openGraph: og("Cazare | Ocaua lui Cuza, Tecuci", "cazare/"),
 };
 
 export default function CazarePage() {
