@@ -62,8 +62,8 @@ export function RequestForm({ kind, preset = "" }: { kind: FormKind; preset?: st
     }
   }
 
-  const field = "mt-1 w-full rounded-lg border border-lemn/30 bg-white px-3 py-2.5 text-ink focus:border-bordo";
-  const label = "block text-sm font-medium";
+  const field = "mt-1.5 w-full rounded-xl border border-aur/35 bg-ivoriu px-4 py-3 text-ink transition focus:border-aur-text focus:bg-white";
+  const label = "block text-xs font-semibold tracking-wide text-muted uppercase";
 
   return (
     <form ref={ref} onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2" aria-label={titles[kind]}>
@@ -89,15 +89,16 @@ export function RequestForm({ kind, preset = "" }: { kind: FormKind; preset?: st
           placeholder={kind === "cazare" ? "Număr de nopți, tipul camerei…" : kind === "eveniment" ? "Tipul evenimentului, preferințe meniu…" : "Ora dorită, preferințe…"} />
       </div>
       <div className="flex flex-wrap gap-3 sm:col-span-2">
-        <button type="submit" disabled={status === "sending"} className="rounded-lg bg-bordo px-5 py-3 font-semibold text-white shadow-sm hover:bg-bordo-2 disabled:opacity-60">
-          {status === "sending" ? "Se trimite…" : "Trimite cererea"}
+        <button type="submit" disabled={status === "sending"} className="flex-1 rounded-full bg-cioco px-6 py-3.5 font-semibold text-ivoriu shadow-sm transition hover:bg-cioco-2 disabled:opacity-60 sm:flex-none">
+          {status === "sending" ? "Se trimite…" : kind === "masa" ? "Rezervă masa" : kind === "cazare" ? "Verifică disponibilitatea" : "Cere oferta"}
         </button>
         {site.telefon.whatsapp && (
-          <button type="button" onClick={whatsapp} className="rounded-lg border-2 border-[#1e7a46] px-5 py-3 font-semibold text-[#145c33] hover:bg-[#1e7a46]/10">
+          <button type="button" onClick={whatsapp} className="flex-1 rounded-full border border-[#1e7a46] px-6 py-3.5 font-semibold text-[#145c33] transition hover:bg-[#1e7a46]/10 sm:flex-none">
             Trimite pe WhatsApp
           </button>
         )}
       </div>
+      <p className="text-xs text-muted sm:col-span-2">Fără plată online. Vă sunăm noi pentru confirmare.</p>
       <p role="status" aria-live="polite" className="text-sm sm:col-span-2">
         {status === "ok" && "Mulțumim! Cererea a fost trimisă. Vă contactăm telefonic pentru confirmare."}
         {status === "err" && `Cererea nu a putut fi trimisă. Încercați pe WhatsApp sau sunați la ${site.telefon.afisat}.`}

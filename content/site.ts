@@ -5,6 +5,25 @@
 
 export const TBD = "[de completat]";
 
+/** true = arată „[de completat]” evidențiat (lucru intern). false = ascunde câmpurile lipsă (aspect final). */
+export const arataLipsuri = false;
+
+/** Are valoare reală (nu e gol și nu e placeholder). */
+export const are = (v?: string) => !!v && !v.includes(TBD);
+
+/*
+ * POZE REALE: pune fișierele în public/poze/ și scrie numele aici (ex. "fatada.jpg").
+ * Cât timp sunt goale, se afișează un placeholder elegant.
+ */
+export const imagini = {
+  hero: "",
+  fatada: "",
+  sala: "",
+  masa: "",
+  bucatarie: "",
+  camera: "",
+};
+
 export const site = {
   nume: "Restaurant & Cazare Ocaua lui Cuza",
   numeScurt: "Ocaua lui Cuza",
@@ -69,22 +88,25 @@ export const despre = {
   titlu: "Tradiție locală din 1992",
   paragrafe: [
     "Ocaua lui Cuza este o firmă locală din Tecuci, care din 1992 primește oaspeți la masă și la cazare, pe Str. 1 Decembrie 1918.",
-    `Bucătărie românească: ${TBD} (specialitățile casei, povestea locului, cine gătește).`,
+    "Bucătărie românească, mese în familie și o sală pregătită pentru momentele importante: totul la aceeași adresă, în Tecuci.",
   ],
+  // Specialitățile casei / povestea locului (apare doar când e completat)
+  specialitati: TBD,
   repere: [
     { valoare: "1992", eticheta: "anul înființării" },
     { valoare: "4,0 ★", eticheta: "pe Google, din peste 660 de recenzii" },
-    { valoare: "Restaurant + cazare", eticheta: "în centrul Tecuciului" },
+    { valoare: "3 în 1", eticheta: "restaurant, cazare și evenimente" },
   ],
 };
 
 export type Produs = { nume: string; descriere?: string; gramaj?: string; pret: string };
-export type CategorieMeniu = { id: string; titlu: string; produse: Produs[] };
+export type CategorieMeniu = { id: string; titlu: string; subtitlu: string; produse: Produs[] };
 
 // Meniu: adaugă/șterge produse liber. Prețurile rămân „[de completat]” până le primim de la local.
 export const meniu: CategorieMeniu[] = [
   {
     id: "ciorbe",
+    subtitlu: "Ciorbe și supe, ca acasă",
     titlu: "Ciorbe",
     produse: [
       { nume: TBD, descriere: TBD, pret: TBD },
@@ -94,6 +116,7 @@ export const meniu: CategorieMeniu[] = [
   },
   {
     id: "feluri-principale",
+    subtitlu: "Preparate românești gătite în casă",
     titlu: "Feluri principale",
     produse: [
       { nume: TBD, descriere: TBD, pret: TBD },
@@ -103,6 +126,7 @@ export const meniu: CategorieMeniu[] = [
   },
   {
     id: "gratar",
+    subtitlu: "De pe grătar, la comandă",
     titlu: "Grătar",
     produse: [
       { nume: TBD, descriere: TBD, pret: TBD },
@@ -112,6 +136,7 @@ export const meniu: CategorieMeniu[] = [
   },
   {
     id: "deserturi",
+    subtitlu: "Ceva dulce la final",
     titlu: "Deserturi",
     produse: [
       { nume: TBD, descriere: TBD, pret: TBD },
@@ -120,6 +145,7 @@ export const meniu: CategorieMeniu[] = [
   },
   {
     id: "bauturi",
+    subtitlu: "Răcoritoare, cafea, vinuri",
     titlu: "Băuturi",
     produse: [
       { nume: TBD, descriere: TBD, pret: TBD },
@@ -147,11 +173,13 @@ export const cazareInfo = {
 
 export const evenimente = {
   titlu: "Evenimente în familie",
-  intro: `Organizăm botezuri, aniversări și mese festive. Capacitate sală: ${TBD}. Meniuri pentru evenimente: ${TBD}.`,
+  intro: "Botezuri, aniversări și mese festive, cu sală elegantă, meniu stabilit împreună și o echipă care se ocupă de detalii.",
+  capacitate: TBD, // ex. „până la 200 de invitați”
+  meniuri: TBD, // ex. „meniuri de la X lei/persoană”
   tipuri: [
-    { titlu: "Botezuri", text: `Meniu și aranjamente pentru botez — ${TBD}.` },
-    { titlu: "Aniversări", text: `Zile de naștere și aniversări în familie — ${TBD}.` },
-    { titlu: "Mese festive", text: `Mese de sărbători, întâlniri, mese de firmă — ${TBD}.` },
+    { titlu: "Botezuri", text: "O zi frumoasă pentru cel mic, cu masa pregătită pentru toată familia." },
+    { titlu: "Aniversări", text: "Zile de naștere, cununii, aniversări de căsătorie, la masa potrivită." },
+    { titlu: "Mese festive", text: "Mese de sărbători, întâlniri de familie și mese de firmă." },
   ],
 };
 

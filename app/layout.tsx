@@ -9,7 +9,7 @@ import { RevealObserver } from "@/components/Reveal";
 
 // next/font descarcă fonturile la build și le servește local, de pe același domeniu.
 const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
-const playfair = Playfair_Display({ subsets: ["latin", "latin-ext"], variable: "--font-playfair", display: "swap" });
+const playfair = Playfair_Display({ subsets: ["latin", "latin-ext"], style: ["normal", "italic"], variable: "--font-playfair", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL + "/"),
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#4a2e20" };
+export const viewport: Viewport = { themeColor: "#3a2419" };
 
 const a = site.adresa;
 const jsonLd = {
